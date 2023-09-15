@@ -13,7 +13,7 @@ app.use(
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello Teste'})
+  res.json({ message: 'Hello Teste, testando commit'})
 })
 
 const DB_USER = process.env.DB_USER
