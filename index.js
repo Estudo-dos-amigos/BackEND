@@ -20,11 +20,9 @@ const routerUser = require('./src/routes/userRoutes')
 
 app.use('/user', routerUser)
 
-const DB_USER = process.env.DB_USER
-const DB_PASSWORD = process.env.DB_PASSWORD
+const mongoDBURL = process.env.MONGODB_URL;
 
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.cvmub6j.mongodb.net/?retryWrites=true&w=majority`
-)
+mongoose.connect(mongoDBURL)
 .then(() => {
   console.log('Conectados ao mongoDB')
   app.listen(3000)
