@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello Teste, testando commit'})
 })
 
+const routerTask = require('./src/routes/taskRoutes')
+
+app.use('/task', routerTask)
+
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 
