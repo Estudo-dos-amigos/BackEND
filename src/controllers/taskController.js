@@ -47,9 +47,14 @@ const getTasks = async (req, res) => {
 
 const getTaskById = async (req, res) => {
   const id = req.params.id;
+  const userId = req.user.id;
 
   try {
-    const tasks = await Task.findOne({ _id: id });
+    const tasks = await Task.findOne({ _id: id, createdBy: userId });
+
+    if (!tasks) {
+      return res.status(422).json({ message: "Essa task não foi encontrada" });
+    }
 
     res.status(200).json(tasks);
   } catch (error) {
@@ -59,7 +64,7 @@ const getTaskById = async (req, res) => {
 
 const updateTask = async (req, res) => {
   const id = req.params.id;
-  const userId = req.user._id;
+  const userId = req.user.id;
 
   if (!/^[0-9a-fA-F]{24}$/.test(id)) {
     return res.status(422).json({ message: "ID da task invalida" });
