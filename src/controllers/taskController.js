@@ -2,7 +2,7 @@ const Task = require("../models/Task");
 
 const createTask = async (req, res) => {
   const { name, description, taskDone } = req.body;
-  const createdBy = req.user._id;
+  const createdBy = req.user.id
 
   if(!name) {
     res.status(422).json({error: 'o nome é obrigatorio!'})
@@ -34,7 +34,7 @@ const createTask = async (req, res) => {
 };
 
 const getTasks = async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.user.id;
 
   try {
     const tasks = await Task.find({ createdBy: userId});
@@ -89,7 +89,7 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   const id = req.params.id;
-  const userId = req.user._id;
+  const userId = req.user.id;
 
   if (!/^[0-9a-fA-F]{24}$/.test(id)) {
     return res.status(422).json({ message: "ID da task invalida" });
