@@ -20,6 +20,10 @@ const routerTask = require('./src/routes/taskRoutes')
 
 app.use('/task', routerTask)
 
+const routerUser = require('./src/routes/userRoutes')
+
+app.use('/user', routerUser)
+
 const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 
