@@ -9,7 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "build": "npm run build:assets",
+    "build:assets": "npm run build:css && npm run build:js",
+    "build:css": "your-css-build-command",
+    "build:js": "your-js-build-command" 
   },
   "keywords": [],
   "author": "",
