@@ -11,7 +11,7 @@ app.use(
   })
 )
 
-app.use(cors());
+app.use(cors())
 
 app.use(express.json())
 
@@ -23,11 +23,13 @@ const routerUser = require('./src/routes/userRoutes')
 
 app.use('/user', routerUser)
 
+const PORT = process.env.port || 3000;
+
 const mongoDBURL = process.env.MONGODB_URL;
 
 mongoose.connect(mongoDBURL)
 .then(() => {
   console.log('Conectados ao mongoDB')
-  app.listen(3000)
+  app.listen(PORT)
 })
 .catch((err) => console.log(err))
